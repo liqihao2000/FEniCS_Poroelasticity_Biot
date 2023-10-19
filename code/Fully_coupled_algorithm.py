@@ -1,5 +1,5 @@
 '''
-Usage       :   A simple test for the coupled algorithm
+Usage       :   A simple test for the fully coupled algorithm
 Author		:	Huipeng Gu
 Date		:	2023/10/16
 '''
