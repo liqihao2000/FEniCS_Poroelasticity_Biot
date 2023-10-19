@@ -14,8 +14,8 @@ time_start = time.time()
 
 # provide parameters for Biot's model
 alpha  = 1.0
-c0	   = 1.0
-KK	   = 1.0
+c0     = 1.0
+KK     = 1.0
 mu     = 1.0
 lmbda  = 1.0
 
