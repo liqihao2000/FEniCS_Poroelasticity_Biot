@@ -43,8 +43,6 @@ ksi_true  = Expression("alpha*10.0*exp((x[0]+x[1])/10.0)*(1+t*t*t)-lmbda*(0.1*ex
 f         = Expression(("-2*mu*(0.3*exp(t)*x[1]) + alpha*exp((x[0]+x[1])/10.0)*(1.0+t*t*t)","-2*mu*(0.3*t*t*x[0] + 0.6*t*t*x[1]) - lmbda*(0.6*t*t*x[1]) + alpha*exp((x[0]+x[1])/10.0)*(1+t*t*t)"), mu=mu, alpha=alpha, lmbda=lmbda, degree=2, t=0.0)
 g         = Expression("c0*(30*exp((x[0]+x[1])/10.0)*(t)*(t)) + alpha*(0.1*exp(t)+0.6*(t)*x[1]*x[1]) - 0.2*KK*exp((x[0]+x[1])/10.0)*(1.0+t*t*t)", c0=c0, alpha=alpha, KK=KK, degree=2, t=0.0)
   
-w1_0      = Expression(("0.1*(x[0]+x[1]*x[1]*x[1])","0.0","alpha*10*exp((x[0]+x[1])/10.0)-lmbda*(0.1)"), alpha=alpha, lmbda=lmbda, degree=2, t=0.0)
-p_0       = Expression("10.0*exp((x[0]+x[1])/10.0)", degree=2)
 w_0       = Expression(("0.1*(x[0]+x[1]*x[1]*x[1])","0.0","alpha*10*exp((x[0]+x[1])/10.0)-lmbda*(0.1)","10*exp((x[0]+x[1])/10.0)"), alpha=alpha, lmbda=lmbda, degree=2, t=0.0)
 
 
