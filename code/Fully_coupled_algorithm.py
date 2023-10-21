@@ -15,7 +15,7 @@ time_start = time.time()
 # provide parameters for Biot's model
 alpha  = 1.0
 c0     = 1.0
-KK     = 1.0
+kp     = 1.0
 mu     = 1.0
 lmbda  = 1.0
 
@@ -41,7 +41,7 @@ p_true    = Expression("10.0*exp((x[0]+x[1])/10.0)*(1.0+t*t*t)", degree=2, t=0.0
 ksi_true  = Expression("alpha*10.0*exp((x[0]+x[1])/10.0)*(1+t*t*t)-lmbda*(0.1*exp(t)+0.3*t*t*x[1]*x[1])", degree=2, alpha=alpha, lmbda=lmbda, t=0.0)
 
 f         = Expression(("-2*mu*(0.3*exp(t)*x[1]) + alpha*exp((x[0]+x[1])/10.0)*(1.0+t*t*t)","-2*mu*(0.3*t*t*x[0] + 0.6*t*t*x[1]) - lmbda*(0.6*t*t*x[1]) + alpha*exp((x[0]+x[1])/10.0)*(1+t*t*t)"), mu=mu, alpha=alpha, lmbda=lmbda, degree=2, t=0.0)
-g         = Expression("c0*(30*exp((x[0]+x[1])/10.0)*(t)*(t)) + alpha*(0.1*exp(t)+0.6*(t)*x[1]*x[1]) - 0.2*KK*exp((x[0]+x[1])/10.0)*(1.0+t*t*t)", c0=c0, alpha=alpha, KK=KK, degree=2, t=0.0)
+g         = Expression("c0*(30*exp((x[0]+x[1])/10.0)*(t)*(t)) + alpha*(0.1*exp(t)+0.6*(t)*x[1]*x[1]) - 0.2*kp*exp((x[0]+x[1])/10.0)*(1.0+t*t*t)", c0=c0, alpha=alpha, kp=kp, degree=2, t=0.0)
   
 w_0       = Expression(("0.1*(x[0]+x[1]*x[1]*x[1])","0.0","alpha*10*exp((x[0]+x[1])/10.0)-lmbda*(0.1)","10*exp((x[0]+x[1])/10.0)"), alpha=alpha, lmbda=lmbda, degree=2, t=0.0)
 
@@ -67,7 +67,7 @@ u_oldc, ksi_oldc, p_oldc = split(w_oldc)
     
 a1c = 2*mu*inner(epsilon(uc), epsilon(vc))*dx - inner(ksic,div(vc))*dx
 a2c = inner(div(uc),phic)*dx + 1.0/lmbda*inner(ksic,phic)*dx - alpha/lmbda*inner(pc,phic)*dx
-a3c = (c0 + alpha*alpha/lmbda)/dt*inner(pc-p_oldc,psic)*dx - alpha/lmbda/dt*inner(ksic-ksi_oldc,psic)*dx + KK*inner(grad(pc),grad(psic))*dx
+a3c = (c0 + alpha*alpha/lmbda)/dt*inner(pc-p_oldc,psic)*dx - alpha/lmbda/dt*inner(ksic-ksi_oldc,psic)*dx + kp*inner(grad(pc),grad(psic))*dx
  
 L1c = inner(f, vc)*dx 
 L2c = inner(g, psic)*dx 
